@@ -1,0 +1,105 @@
+/* Estilo global */
+body {
+  font-family: Arial, sans-serif; /* Define a fonte padrão para o corpo do documento */
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove preenchimento padrão */
+}
+
+/* Estilo para o cabeçalho */
+.header {
+  background-color: #007bff; /* Cor de fundo do cabeçalho */
+  color: #fff; /* Cor do texto do cabeçalho */
+  padding: 0 20px; /* Espaçamento interno do cabeçalho */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: margin-left 0.3s ease; /* Adiciona uma transição suave para o ajuste de margem */
+}
+
+/* Estilo para o cabeçalho quando o menu lateral está ativo */
+.header.menu-active {
+  margin-left: 250px; /* Adiciona margem à esquerda para acomodar o menu lateral */
+}
+
+/* Estilo para o footer */
+.footer {
+  background-color: #007bff; /* Cor de fundo do rodapé */
+  color: #fff; /* Cor do texto do rodapé */
+  padding: 20px; /* Espaçamento interno do rodapé */
+  transition: margin-left 0.3s ease; /* Adiciona uma transição suave para o ajuste de margem */
+  position: absolute; /* Alterado para posicionamento absoluto */
+  bottom: 0; /* Alinha o rodapé no final da página */
+  width: 100%; /* Define a largura como 100% */
+}
+
+/* Estilo para o footer quando o menu lateral está ativo */
+.footer.menu-active {
+  margin-left: 250px; /* Adiciona margem à esquerda para acomodar o menu lateral */
+}
+
+/* Estilo para o menu lateral */
+.sidebar {
+  background-color: #f8f9fa; /* Cor de fundo do menu lateral */
+  width: 250px; /* Largura do menu lateral */
+  height: 100%; /* Altura do menu lateral */
+  position: fixed; /* Fixa o menu lateral */
+  top: 0; /* Alinha o topo do menu lateral */
+  left: -250px; /* Esconde o menu lateral por padrão */
+  transition: left 0.3s ease; /* Adiciona uma transição suave para o efeito de esconder/mostrar */
+  z-index: 1000; /* Garante que o menu lateral esteja acima de outros elementos */
+}
+
+.sidebar.active {
+  left: 0; /* Mostra o menu lateral quando ativo */
+}
+
+/* Estilo para o título do menu lateral */
+.sidebar-title {
+  color: #333; /* Cor do texto do título */
+  padding: 10px 20px; /* Espaçamento interno do título */
+  margin-bottom: 10px; /* Margem inferior para separar o título das opções de navegação */
+}
+
+/* Estilo para o conteúdo principal */
+.content {
+  margin-left: 0; /* Margem inicial do conteúdo principal */
+  padding: 20px; /* Espaçamento interno do conteúdo principal */
+  transition: margin-left 0.3s ease; /* Adiciona uma transição suave para o ajuste do conteúdo principal */
+}
+
+/* Estilo para o conteúdo principal quando o menu lateral está ativo */
+.content.menu-active {
+  margin-left: 250px; /* Adiciona margem à esquerda para acomodar o menu lateral */
+}
+
+
+/* Estilo para os itens do menu lateral */
+.nav-item {
+  padding: 2px 0; /* Espaçamento interno dos itens do menu lateral */
+}
+
+/* Estilo para os links do menu lateral */
+.nav-link {
+  color: #212529; /* Cor do texto dos links do menu lateral */
+}
+
+/* Estilo para o ícone de seta nos itens do menu lateral */
+.nav-link .fas {
+  margin-right: 10px; /* Margem à direita do ícone de seta */
+}
+
+/* Estilo para os submenus */
+.sub-menu {
+  display: none; /* Oculta os submenus por padrão */
+  padding-left: 20px; /* Espaçamento interno à esquerda dos submenus */
+}
+
+/* Estilo para os itens dos submenus */
+.sub-menu .nav-item {
+  padding: 2px 0; /* Espaçamento interno dos itens dos submenus */
+}
+
+/* Estilo para os links dos submenus */
+.sub-menu .nav-link {
+  color: #333; /* Cor do texto dos links dos submenus */
+}

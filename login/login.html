@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styleLogin.css" />
     <title>Tela Login</title>
-    <link rel="icon" href="public/favicon_conti.jpg" />
+    <link rel="icon" href="../images/favicon_conti.jpg" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
   <body>
     <div class="main-login">
       <div class="logo">
         <img
-          src="./public/conti_original-fundo-branco.jpg"
+          src="../images/conti_original-fundo-branco.jpg"
           class="logo-image"
           alt="ConTi Logo"
         />
@@ -22,16 +22,16 @@
           <form id="loginForm">
             <div class="form-group">
               <label for="username">Usuário:</label>
-              <input type="text" id="username" name="username" placeholder="Usuário" />
+              <input type="text" class="form-control" id="username" name="username" placeholder="Usuário" />
             </div>
         <div class="textfield">
           <div class="form-group">
           <label for="password">Senha:</label>
-          <input type="password" id="password" name="password" placeholder="Senha" />
+          <input type="password" class="form-control" id="password" name="password" placeholder="Senha" />
         </div>
         </div>
-        <button type="submit" class="btn-login">Login</button>
+        <button type="submit" class="btn-login">Entrar</button>
     </div>
-    <script src="./script.js"></script>
+    <script src="./scriptLogin.js"></script>
   </body>
 </html>

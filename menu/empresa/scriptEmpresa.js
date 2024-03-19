@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const username = "super";
-  const password = "super";
 
-  const base64Credentials = btoa(`${username}:${password}`);
+  const base64Credentials = sessionStorage.getItem('token');
+
+  if (base64Credentials) {
+    console.log('base64Credentials: ', base64Credentials);
+  } else {
+      console.error('base64Credentials não encontrado na sessionStorage');
+  }
 
   fetch(
     "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa",
