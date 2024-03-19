@@ -1,0 +1,77 @@
+/* Estilos personalizados para a tabela */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 15px;
+}
+
+.navbar-nav .nav-link {
+  color: #333;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #555;
+}
+
+.btn-outline-primary {s
+  background-color: #ebecee;
+  color: #fff;
+  border: 1px solid #0098c9;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0098c9;
+  border-color: #ebecee;
+}
+
+.table-striped {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  margin-top: 20px;
+}
+
+.table-striped th,
+.table-striped td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid black;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.table-striped th {
+  background-color: rgb(147, 145, 150);
+  color: white;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table-striped tbody tr:hover {
+  background-color: #ddd;
+}
+
+/* Estilos para a tabela quando em telas pequenas */
+@media screen and (max-width: 600px) {
+  .table-striped {
+    overflow-x: auto;
+    display: block;
+  }
+
+  .table-striped th,
+  .table-striped td {
+    white-space: nowrap;
+  }
+}

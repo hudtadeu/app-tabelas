@@ -1,0 +1,84 @@
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/poppins/v15/pxiEyp8kv8JHgFVrLGT9Z1xlFQ.woff2)
+    format("woff2");
+}
+* {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #ebecee;
+  width: 250px;
+  height: 100%;
+  border-radius: 0px 18px 18px 0px;
+  position: fixed;
+}
+
+.sidebar .title {
+  color: #0098c9;
+  text-align: center;
+  font-weight: bold;
+  line-height: 45px;
+  font-size: 24px;
+  border-bottom: 2px solid #65aca4;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  line-height: 40px;
+  border-bottom: 1px solid white;
+}
+
+.sidebar ul li a {
+  color: #211915;
+  text-decoration: none;
+  font-size: 20px;
+  padding-left: 30px;
+  font-weight: bold;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  background-color: #65aca4;
+  transition: 0.5;
+}
+
+.sidebar ul ul li a {
+  font-size: 16px;
+  font-weight: 300;
+  padding-left: 60px;
+  background-color: #ebecee;
+}
+
+.sidebar ul ul {
+  display: none;
+}
+
+.sidebar ul .itemsManutencao.show {
+  display: block;
+}
+
+.sidebar ul .itemsTarefas.show {
+  display: block;
+}
+
+.sidebar ul li a span {
+  font-size: 30px;
+  position: absolute;
+  right: 30px;
+  transition: 0.4s;
+}
+
+.sidebar ul li a span.spin {
+  transform: rotate(90deg);
+}
