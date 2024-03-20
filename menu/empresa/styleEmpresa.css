@@ -63,6 +63,10 @@
   background-color: #ddd;
 }
 
+.icon-small {
+  font-size: 15px; /* Tamanho desejado para os ícones */
+}
+
 /* Estilos para a tabela quando em telas pequenas */
 @media screen and (max-width: 600px) {
   .table-striped {

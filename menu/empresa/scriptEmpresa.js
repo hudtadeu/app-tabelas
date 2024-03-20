@@ -29,6 +29,17 @@ document.addEventListener("DOMContentLoaded", function () {
                   <td>${item["ins-municipal"]}</td>
                   <td>${item["inscr-estad"]}</td>
                   <td>${item["razao-social"]}</td>
+                  <td>
+                    <button type="button" class="btn btn-primary" title="Detalhar">
+                      <i class="bi bi-eye icon-small"></i>
+                    </button>
+                    <button type="button" class="btn btn-warning" title="Editar">
+                      <i class="bi bi-pencil icon-small"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger" title="Excluir">
+                      <i class="bi bi-trash icon-small"></i>
+                    </button>
+                  </td>
               `;
           tableBody.appendChild(row);
         });
