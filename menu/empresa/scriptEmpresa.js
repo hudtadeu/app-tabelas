@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-  const base64Credentials = sessionStorage.getItem('token');
+  const base64Credentials = sessionStorage.getItem("token");
 
   if (base64Credentials) {
-    console.log('base64Credentials: ', base64Credentials);
+    console.log("base64Credentials: ", base64Credentials);
   } else {
-      console.error('base64Credentials não encontrado na sessionStorage');
+    console.error("base64Credentials não encontrado na sessionStorage");
   }
 
   fetch(
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <td>${item["inscr-estad"]}</td>
                   <td>${item["razao-social"]}</td>
                   <td>
-                    <button type="button" class="btn btn-primary" title="Detalhar">
+                    <button id="detalharBtn" type="button" class="btn btn-primary" title="Detalhar">
                       <i class="bi bi-eye icon-small"></i>
                     </button>
                     <button type="button" class="btn btn-warning" title="Editar">
@@ -48,4 +47,41 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     })
     .catch((error) => console.error("Erro ao carregar dados da API:", error));
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Seu código existente para carregar os dados da API
+
+  // Função para detalhar informações de uma empresa com base no código
+  function detalharModal(epCodigo) {
+    // Construir a URL com base no ep-codigo
+    var url =
+      "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/?ep-codigo=" +
+      epCodigo;
+
+    // Realizar a solicitação GET usando fetch()
+    fetch(url)
+      .then((response) => {
+        // Verificar se a resposta está ok
+        if (!response.ok) {
+          throw new Error("Erro ao solicitar os detalhes da empresa");
+        }
+        // Retornar os dados em formato JSON
+        return response.json();
+      })
+      .then((data) => {
+        // Manipular os dados recebidos
+        console.log(data); // Aqui você pode processar os dados conforme necessário
+      })
+      .catch((error) => {
+        // Lidar com erros de requisição
+        console.error("Erro de requisição:", error);
+      });
+  }
+
+  // Exemplo de como chamar a função detalharEmpresa ao clicar no ícone de detalhe
+  document.getElementById("detalharBtn").addEventListener("click", function () {
+    // Abre o modal de detalhar
+    $("#detalharModal").modal("show");
+  });
 });
