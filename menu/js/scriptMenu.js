@@ -37,8 +37,26 @@ $(document).ready(function(){
 
     // Evento de clique no botão para esconder/mostrar o menu lateral
     $('#toggleMenu').click(function(){
+        // $('.sidebar').toggleClass('active');
+        // $('.header, .footer').toggleClass('menu-active'); // Adiciona classe ao cabeçalho e rodapé para ajustar margem
+        // $('.content').toggleClass('menu-active'); // Adiciona classe ao conteúdo para ajustar margem
         $('.sidebar').toggleClass('active');
         $('.header, .footer').toggleClass('menu-active'); // Adiciona classe ao cabeçalho e rodapé para ajustar margem
         $('.content').toggleClass('menu-active'); // Adiciona classe ao conteúdo para ajustar margem
+
+        // Altera o título do botão de acordo com o estado do menu
+        if ($('.sidebar').hasClass('active')) {
+            $(this).attr('title', 'Fechar Menu');
+        } else {
+            $(this).attr('title', 'Abrir Menu');
+        }
     });
+
+    // Simulação de login bem-sucedido
+    // Suponha que o usuário tenha feito login e o menu lateral deva aparecer
+    // Remova esta parte quando integrar com a funcionalidade de login real
+    $('.sidebar').addClass('active');
+    $('.header, .footer').addClass('menu-active');
+    $('.content').addClass('menu-active');
+    $('#toggleMenu').attr('title', 'Fechar Menu'); // Define o título inicial do botão
 });
