@@ -7,7 +7,7 @@ body {
 
 /* Estilo para o cabeçalho */
 .header {
-  background-color: #007bff; /* Cor de fundo do cabeçalho */
+  background-color: #b7e9fa; /* Cor de fundo do cabeçalho */
   color: #fff; /* Cor do texto do cabeçalho */
   padding: 0 20px; /* Espaçamento interno do cabeçalho */
   display: flex;
@@ -21,9 +21,16 @@ body {
   margin-left: 250px; /* Adiciona margem à esquerda para acomodar o menu lateral */
 }
 
+/* Estilo para a imagem do título da empresa */
+.header img {
+  width: 300px; /* Largura da imagem */
+  height: 50px; /* Altura da imagem */
+  margin: 0 auto; /* Centraliza o elemento */
+}
+
 /* Estilo para o footer */
 .footer {
-  background-color: #007bff; /* Cor de fundo do rodapé */
+  background-color: #b7e9fa; /* Cor de fundo do rodapé */
   color: #fff; /* Cor do texto do rodapé */
   padding: 20px; /* Espaçamento interno do rodapé */
   transition: margin-left 0.3s ease; /* Adiciona uma transição suave para o ajuste de margem */
@@ -102,4 +109,9 @@ body {
 /* Estilo para os links dos submenus */
 .sub-menu .nav-link {
   color: #333; /* Cor do texto dos links dos submenus */
+}
+
+/* Estilo para o botão do menu */
+#toggleMenu {
+  margin-right: 0 !important; /* Define a margem direita como 0 para posicionar o botão mais à esquerda */
 }
