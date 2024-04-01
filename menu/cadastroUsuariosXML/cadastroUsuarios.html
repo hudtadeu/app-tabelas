@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Empresa</title>
-    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -22,96 +21,119 @@
     />
     <!-- Ícone -->
     <link rel="icon" href="../../images/favicon_conti.jpg" />
+    <style>
+      /* Estilos personalizados aqui */
+    </style>
   </head>
   <body>
     <div class="container">
-      <h1>Cadastro de Usuários</h1>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <button onclick="openModal()" id="new">Novo Usuário</button>
-            </li>
-          </ul>
+      <h1 class="text-center">Cadastro de Usuários</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-primary mb-3" onclick="openModal()">
+            Novo Usuário
+          </button>
+        </div>
+        <div class="col-md-6">
+          <form class="form-inline">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Pesquisar" />
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">
+                  Buscar
+                </button>
+              </div>
             </div>
-            <form class="form-inline">
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Pesquisar"
-                />
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button">
-                    Buscar
-                  </button>
-                </div>
           </form>
         </div>
-      </nav>
-      </nav>
-      <table class="table table-striped" id="userTable">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Usuário</th>
-            <th scope="col">Estabelecimento</th>
-            <th scope="col">AP <i class="bi bi-caret-up-fill"></i><i class="bi bi-caret-down-fill"></i></th>
-            <th scope="col">OF <i class="bi bi-caret-up-fill"></i><i class="bi bi-caret-down-fill"></i></th>
-            <th scope="col">RI <i class="bi bi-caret-up-fill"></i><i class="bi bi-caret-down-fill"></i></th>
-            <th scope="col">FIFO <i class="bi bi-caret-up-fill"></i><i class="bi bi-caret-down-fill"></i></th>
-            <th scope="col">Com erro <i class="bi bi-caret-up-fill"></i><i class="bi bi-caret-down-fill"></i></th>
-            <th scope="col">Com advert. <i class="bi bi-caret-up-fill"></i><i class="bi bi-caret-down-fill"></i></th>
-            <th scope="col">Com erro duplic <i class="bi bi-caret-up-fill"></i><i class="bi bi-caret-down-fill"></i></th>
-            <th scope="col">
-                <i class="bi bi-gear"></i>
-            </th>
-          </tr>
-        </thead>
-        <tbody id="table-body">
-          <!-- Aqui serão inseridos os dados da tabela -->
-          <div
-            class="modal fade"
-            id="detalharModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="detalharModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="detalharModalLabel">
-                    Detalhar Informação
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Fechar"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <!-- Corpo do modal -->
-                  <p>
-                    Este modal pode conter qualquer conteúdo que você desejar.
-                  </p>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Fechar
-                  </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Usuário</th>
+              <th scope="col">Estabelecimento</th>
+              <th scope="col">
+                Atualiza <i class="bi bi-caret-up-fill"></i
+                ><i class="bi bi-caret-down-fill"></i>
+              </th>
+              <th scope="col">
+                Elimina <i class="bi bi-caret-up-fill"></i
+                ><i class="bi bi-caret-down-fill"></i>
+              </th>
+              <th scope="col">
+                Exporta <i class="bi bi-caret-up-fill"></i
+                ><i class="bi bi-caret-down-fill"></i>
+              </th>
+              <th scope="col">
+                Importa <i class="bi bi-caret-up-fill"></i
+                ><i class="bi bi-caret-down-fill"></i>
+              </th>
+              <th scope="col">
+                Altera <i class="bi bi-caret-up-fill"></i
+                ><i class="bi bi-caret-down-fill"></i>
+              </th>
+              <th scope="col">
+                Cancela <i class="bi bi-caret-up-fill"></i
+                ><i class="bi bi-caret-down-fill"></i>
+              </th>
+              <th scope="col">
+                Arquiva <i class="bi bi-caret-up-fill"></i
+                ><i class="bi bi-caret-down-fill"></i>
+              </th>
+              <th scope="col">
+                Manifesta <i class="bi bi-caret-up-fill"></i
+                ><i class="bi bi-caret-down-fill"></i>
+              </th>
+              <th scope="col"><i class="bi bi-gear"></i></th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- Aqui serão inseridos os dados da tabela -->
+            <div
+              class="modal fade"
+              id="detalharModal"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="detalharModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="detalharModalLabel">
+                      Detalhar Informação
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Fechar"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Corpo do modal -->
+                    <p>
+                      Este modal pode conter qualquer conteúdo que você desejar.
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Fechar
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     </div>
     <!-- Bootstrap JS (opcional, se você precisar de componentes interativos do Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

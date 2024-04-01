@@ -20,12 +20,19 @@
     <form id="eventoForm">
       <label for="estabelecimento">Estabelecimento:</label>
       <input type="text" id="estabelecimento" name="estabelecimento" required />
-      <input
-        type="text"
-        id="estabelecimento"
-        name="estabelecimento"
-        required
-      /><br /><br />
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="estabelecimento"
+          name="estabelecimento"
+          required
+        />
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="bi bi-caret-down"></i></span>
+        </div>
+      </div>
+      <br />
 
       <label for="tipoEvento">Tipo de Evento:</label>
       <input
@@ -51,13 +58,15 @@
         required
       /><br /><br />
 
-      <label>Variáveis:</label><br />
-      $01: Número Documento <span id="var01"></span> $02: Série Documento
-      <span id="var02"></span> $03: Cod Fornecedor <span id="var03"></span> $04:
-      Data Emissão <span id="var04"></span> $05: Valor Documento
-      <span id="var05"></span> $06: Chave Documento
-      <span id="var06"></span> $07: Descrição da Operação XML
-      <span id="var07"></span><br />
+      <div id="variables">
+        <label>Variáveis:</label><br />
+        $01 - Número Documento |<span id="var01"></span> $02 - Série Documento |
+        <span id="var02"></span> $03 - Cod Fornecedor |
+        <span id="var03"></span> $04 - Data Emissão |<span id="var04"></span>
+        $05 - Valor Documento |<span id="var05"></span> $06 - Chave Documento |
+        <span id="var06"></span> $07 - Descrição da Operação XML |
+        <span id="var07"></span><br /><br />
+      </div>
 
       <label for="textoPadraoEmail">Texto Padrão do E-mail:</label><br />
       <textarea
