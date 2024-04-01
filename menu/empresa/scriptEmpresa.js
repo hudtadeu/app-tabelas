@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const base64Credentials = sessionStorage.getItem("token");
 
   if (base64Credentials) {
-    console.log("base64Credentials: ", base64Credentials);
+    //console.log("base64Credentials: ", base64Credentials);
   } else {
     console.error("base64Credentials não encontrado na sessionStorage");
   }
@@ -85,3 +85,42 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#detalharModal").modal("show");
   });
 });
+
+function editarEmpresa(epCodigo) {
+  // Implemente a lógica para obter os dados atualizados da empresa, seja através de um modal de edição ou outro método
+
+  // Exemplo de dados atualizados
+  const dadosAtualizados = {
+    // Insira os dados atualizados da empresa aqui
+    razao_social: "Nova Razão Social",
+    cgc: "Novo CGC",
+    // Etc...
+  };
+
+  // URL para enviar a solicitação PUT
+  const url =
+    "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/?ep-codigo=" +
+    epCodigo;
+
+  fetch(url, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${sessionStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(dadosAtualizados),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro ao editar empresa");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Empresa editada com sucesso:", data);
+      // Atualize a tabela ou faça outras ações necessárias após a edição bem-sucedida
+    })
+    .catch((error) => {
+      console.error("Erro ao editar empresa:", error);
+    });
+}
