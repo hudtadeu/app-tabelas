@@ -37,20 +37,53 @@ h1 {
 .table th {
   background-color: #fff !important;
   color: #0098c9 !important;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .table td {
   border-top: 1px solid;
-  color: #fff !important;
+  color: #0098c9 !important;
+  font-size: 12px;
 }
 
-.btn {
-  color: #0098c9;
-  border-color: #0098c9;
+.dropdown-toggle {
+  background-color: transparent !important; /* Defina a cor desejada */
+  color: #0098c9 !important;
+  font-size: 10px; /* Defina o tamanho desejado */
+  border: none !important; /* Remover a borda */
+  box-shadow: none !important; /* Remover a sombra */
+  padding: none; /* Remover o preenchimento */
+  font-size: 12px;
 }
 
-.btn:hover {
+.dropdown-item {
+  background-color: #fff !important;
+  color: #0098c9; /* Defina a cor desejada */
+  font-size: 10px; /* Defina o tamanho desejado */
+}
+
+.red-text {
+  color: red;
+}
+
+.btn-primary mb-3 {
+  color: #fff;
+  border-color: #fff;
+  background-color: #0098c9 !important;
+}
+
+.btn-primary :hover {
+  background-color: #0098c9;
+  color: #fff;
+}
+
+.btn-outline-secondary {
+  color: #fff;
+  border-color: #fff;
+  background-color: #0098c9 !important;
+}
+
+.btn-outline-secondary :hover {
   background-color: #0098c9;
   color: #fff;
 }

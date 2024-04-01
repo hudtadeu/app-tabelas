@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Empresa</title>
+    <title>Cadastro Usuários</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -90,47 +90,34 @@
           </thead>
           <tbody id="table-body">
             <!-- Aqui serão inseridos os dados da tabela -->
-            <div
-              class="modal fade"
-              id="detalharModal"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="detalharModalLabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="detalharModalLabel">
-                      Detalhar Informação
-                    </h5>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Fechar"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <!-- Corpo do modal -->
-                    <p>
-                      Este modal pode conter qualquer conteúdo que você desejar.
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-dismiss="modal"
-                    >
-                      Fechar
-                    </button>
+            <tr>
+              <td>Usuário1</td>
+              <td>Estabelecimento1</td>
+              <td>Atualiza</td>
+              <td>Elimina</td>
+              <td>Exporta</td>
+              <td>Importa</td>
+              <td>Altera</td>
+              <td>Cancela</td>
+              <td>Arquiva</td>
+              <td>Manifesta</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-three-dots"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Visualizar</a>
+                    <a class="dropdown-item" href="#">Editar</a>
+                    <a class="dropdown-item" href="#">Duplicar</a>
+                    <a class="dropdown-item" href="#">Exportar</a>
+                    <a class="dropdown-item red-text" href="#">Excluir</a>
                   </div>
                 </div>
-              </div>
-            </div>
+              </td>
+            </tr>
+            <!-- Mais linhas da tabela -->
+          </tbody>
           </tbody>
         </table>
       </div>
