@@ -88,3 +88,15 @@ h1 {
   background-color: #0098c9;
   color: #fff;
 }
+
+@media screen and (max-width: 600px) {
+  .table-striped {
+    overflow-x: auto;
+    display: block;
+  }
+
+  .table-striped th,
+  .table-striped td {
+    white-space: nowrap;
+  }
+}
