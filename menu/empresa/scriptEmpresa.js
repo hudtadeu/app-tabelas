@@ -81,15 +81,38 @@ function detalharModal(epCodigo) {
       }
       return response.json();
     })
+
     .then((data) => {
-      const detalhesEmpresa = document.getElementById("detalhesEmpresa");
-      detalhesEmpresa.textContent = JSON.stringify(data, null, 2);
+      const modalBody = document.getElementById("modalBody");
+      modalBody.innerHTML = ""; // Limpa o conteúdo anterior do modal
+
+      // Cria uma tabela
+      const table = document.createElement("table");
+      table.classList.add("table");
+
+      // Cria o corpo da tabela
+      const tbody = document.createElement("tbody");
+
+      // Adiciona uma linha para cada chave-valor nos dados
+      for (const key in data) {
+        const tr = document.createElement("tr");
+        const th = document.createElement("th");
+        th.textContent = key;
+        const td = document.createElement("td");
+        td.textContent = data[key];
+        tr.appendChild(th);
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+      }
+
+      // Adiciona o corpo da tabela à tabela
+      table.appendChild(tbody);
+
+      // Adiciona a tabela ao corpo do modal
+      modalBody.appendChild(table);
 
       // Abrir o modal
       $("#detalhesModal").modal("show");
-    })
-    .catch((error) => {
-      console.error("Erro ao carregar detalhes da empresa:", error);
     });
 }
 
