@@ -29,17 +29,61 @@ document.addEventListener("DOMContentLoaded", function () {
           row.innerHTML = `
           <td>${item["cod-usuario"]}</td>
           <td>${item["cod-estabel"]}</td>
-          <td>${item["l-importa"]}</td>
-          <td>${item["l-elimina"]}</td>
-          <td>${item["l-cancela-doc"]}</td>
-          <td>${item["l-altera-cfop"]}</td>
-          <td>${item["l-atualiza"]}</td>
-          <td>${item["l-efetua-download"]}</td>
-          <td>${item["l-arquiva-xml"]}</td>
-          <td>${item["l-manifesta"]}</td>
-          <td>${item["l-prioriza-documento"]}</td>
-          <td>${item["l-recebe-fiscal"]}</td>
-          <td>${item["l-recebe-fisico"]}</td>
+          <td>${
+            item["l-importa"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
+          <td>${
+            item["l-elimina"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
+          <td>${
+            item["l-cancela-doc"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
+          <td>${
+            item["l-altera-cfop"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
+          <td>${
+            item["l-atualiza"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
+          <td>${
+            item["l-efetua-download"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
+          <td>${
+            item["l-arquiva-xml"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
+          <td>${
+            item["l-manifesta"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
+          <td>${
+            item["l-prioriza-documento"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
+          <td>${
+            item["l-recebe-fiscal"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
+          <td>${
+            item["l-recebe-fisico"]
+              ? '<i class="bi bi-check-circle-fill text-success"></i>'
+              : '<i class="bi bi-x-circle-fill text-danger"></i>'
+          }</td>
           <td>
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
