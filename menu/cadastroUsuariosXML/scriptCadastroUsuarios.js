@@ -40,6 +40,20 @@ document.addEventListener("DOMContentLoaded", function () {
           <td>${item["l-prioriza-documento"]}</td>
           <td>${item["l-recebe-fiscal"]}</td>
           <td>${item["l-recebe-fisico"]}</td>
+          <td>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-three-dots"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Visualizar</a>
+                    <a class="dropdown-item" href="#">Editar</a>
+                    <a class="dropdown-item" href="#">Duplicar</a>
+                    <a class="dropdown-item" href="#">Exportar</a>
+                    <a class="dropdown-item red-text" href="#">Excluir</a>
+                  </div>
+                </div>
+              </td>
         `;
           tableBody.appendChild(row);
         });
