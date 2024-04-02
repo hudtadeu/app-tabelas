@@ -1,4 +1,58 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const base64Credentials = sessionStorage.getItem("token");
+
+  if (!base64Credentials) {
+    console.error("base64Credentials não encontrado na sessionStorage");
+    return;
+  }
+
+  fetch(
+    "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestUsuarioLoader",
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Basic ${base64Credentials}`,
+      },
+    }
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro ao solicitar os dados da API");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.items && data.items.length > 0) {
+        const tableBody = document.getElementById("table-body");
+        data.items.forEach((item, index) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+          <td>${item["cod-usuario"]}</td>
+          <td>${item["cod-estabel"]}</td>
+          <td>${item["l-importa"]}</td>
+          <td>${item["l-elimina"]}</td>
+          <td>${item["l-cancela-doc"]}</td>
+          <td>${item["l-altera-cfop"]}</td>
+          <td>${item["l-atualiza"]}</td>
+          <td>${item["l-efetua-download"]}</td>
+          <td>${item["l-arquiva-xml"]}</td>
+          <td>${item["l-manifesta"]}</td>
+          <td>${item["l-prioriza-documento"]}</td>
+          <td>${item["l-recebe-fiscal"]}</td>
+          <td>${item["l-recebe-fisico"]}</td>
+        `;
+          tableBody.appendChild(row);
+        });
+      } else {
+        console.error("Nenhum item encontrado na resposta.");
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao carregar dados da API:", error);
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   // Função para abrir o modal de novo usuário
   function openModal() {
     // Código para abrir o modal aqui

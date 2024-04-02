@@ -3,21 +3,29 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0098c9;
+}
+
 .navbar-nav {
   display: flex;
   align-items: center;
+  background-color: #fff;
+  border-bottom: 2px solid #0098c9;
 }
 
 .navbar-nav .nav-item {
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .navbar-nav .nav-link {
-  color: #333;
+  color: #0098c9;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #555;
+  color: #0098c9;
 }
 
 .btn-outline-primary {
@@ -36,8 +44,10 @@
 
 .table-striped {
   width: 100%;
+  background-color: #fff;
   border-collapse: collapse;
   border: 1px solid #ddd;
+  border-radius: 8px;
   margin-top: 20px;
 }
 
@@ -48,15 +58,19 @@
   border: 1px solid black;
   border-collapse: collapse;
   border-spacing: 0;
+  background-color: #fff !important;
+  color: #0098c9 !important;
+  font-size: 13px;
 }
 
 .table-striped th {
-  background-color: rgb(147, 145, 150);
-  color: white;
+  background-color: #fff !important;
+  color: #0098c9 !important;
+  font-size: 13px;
 }
 
 .table-striped tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #0098c9;
 }
 
 .table-striped tbody tr:hover {

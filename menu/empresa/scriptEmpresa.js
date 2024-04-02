@@ -63,11 +63,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function detalharModal(epCodigo) {
-  var url =
+  const url =
     "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/?ep-codigo=" +
     epCodigo;
 
-  fetch(url)
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${sessionStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(),
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erro ao solicitar os detalhes da empresa");
@@ -75,8 +82,11 @@ function detalharModal(epCodigo) {
       return response.json();
     })
     .then((data) => {
-      console.log(data); // Aqui você pode processar os dados conforme necessário
-      // Exibir detalhes da empresa em um modal,
+      const detalhesEmpresa = document.getElementById("detalhesEmpresa");
+      detalhesEmpresa.textContent = JSON.stringify(data, null, 2);
+
+      // Abrir o modal
+      $("#detalhesModal").modal("show");
     })
     .catch((error) => {
       console.error("Erro ao carregar detalhes da empresa:", error);
@@ -119,5 +129,32 @@ function editarEmpresa(epCodigo) {
     })
     .catch((error) => {
       console.error("Erro ao editar empresa:", error);
+    });
+}
+
+function excluirEmpresa(epCodigo) {
+  // URL para enviar a solicitação DELETE
+  const url =
+    "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/?ep-codigo=" +
+    epCodigo;
+
+  fetch(url, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Basic ${sessionStorage.getItem("token")}`,
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro ao excluir empresa");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Empresa excluída com sucesso:", data);
+      // Atualize a tabela ou faça outras ações necessárias após a exclusão bem-sucedida
+    })
+    .catch((error) => {
+      console.error("Erro ao excluir empresa:", error);
     });
 }

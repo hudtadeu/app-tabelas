@@ -37,7 +37,8 @@ h1 {
 .table th {
   background-color: #fff !important;
   color: #0098c9 !important;
-  font-size: 13px;
+  font-size: 12px;
+  text-align: left;
 }
 
 .table td {

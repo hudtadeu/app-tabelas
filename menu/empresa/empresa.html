@@ -82,52 +82,46 @@
         </thead>
         <tbody id="table-body">
           <!-- Aqui serão inseridos os dados da tabela -->
-          <div
-            class="modal fade"
-            id="detalharModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="detalharModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="detalharModalLabel">
-                    Detalhar Informação
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Fechar"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <!-- Corpo do modal -->
-                  <p>
-                    Aqui você pode adicionar o texto que deseja mostrar no modal
-                    de detalhar.
-                  </p>
-                  <p>
-                    Este modal pode conter qualquer conteúdo que você desejar.
-                  </p>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Fechar
-                  </button>
-                </div>
+        </tbody>
+        <div
+          class="modal fade"
+          id="detalharModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="detalharModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="detalharModalLabel">
+                  Detalhar Informação
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Fechar"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Corpo do modal -->
+                <p id="detalhesEmpresa"></p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Fechar
+                </button>
               </div>
             </div>
           </div>
-        </tbody>
+        </div>
       </table>
     </div>
     <!-- Bootstrap JS (opcional, se você precisar de componentes interativos do Bootstrap) -->
