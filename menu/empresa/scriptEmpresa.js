@@ -60,62 +60,77 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("Erro ao carregar dados da API:", error);
     });
-});
 
-function detalharModal(epCodigo) {
-  const url =
-    "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/?ep-codigo=" +
-    epCodigo;
+  function detalharModal(epCodigo) {
+    const url =
+      "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/?ep-codigo=" +
+      epCodigo;
 
-  fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Basic ${sessionStorage.getItem("token")}`,
-    },
-    body: JSON.stringify(),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Erro ao solicitar os detalhes da empresa");
-      }
-      return response.json();
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${sessionStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(),
     })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erro ao solicitar os detalhes da empresa");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const detalhesEmpresa = document.getElementById("detalhesEmpresa");
+        const modalBody = document.getElementById("modalBody");
 
-    .then((data) => {
-      const modalBody = document.getElementById("modalBody");
-      modalBody.innerHTML = ""; // Limpa o conteúdo anterior do modal
+        // Limpa o conteúdo anterior do modal
+        modalBody.innerHTML = "";
 
-      // Cria uma tabela
-      const table = document.createElement("table");
-      table.classList.add("table");
+        // Cria uma tabela
+        const table = document.createElement("table");
+        table.classList.add("table");
 
-      // Cria o corpo da tabela
-      const tbody = document.createElement("tbody");
+        // Cria o cabeçalho da tabela
+        const thead = document.createElement("thead");
+        const trHead = document.createElement("tr");
 
-      // Adiciona uma linha para cada chave-valor nos dados
-      for (const key in data) {
-        const tr = document.createElement("tr");
-        const th = document.createElement("th");
-        th.textContent = key;
-        const td = document.createElement("td");
-        td.textContent = data[key];
-        tr.appendChild(th);
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-      }
+        // Adiciona cabeçalhos de coluna
+        for (const key in data) {
+          const th = document.createElement("th");
+          th.textContent = key;
+          trHead.appendChild(th);
+        }
 
-      // Adiciona o corpo da tabela à tabela
-      table.appendChild(tbody);
+        thead.appendChild(trHead);
+        table.appendChild(thead);
 
-      // Adiciona a tabela ao corpo do modal
-      modalBody.appendChild(table);
+        // Cria o corpo da tabela
+        const tbody = document.createElement("tbody");
 
-      // Abrir o modal
-      $("#detalhesModal").modal("show");
-    });
-}
+        // Adiciona uma linha com os detalhes da empresa
+        const trBody = document.createElement("tr");
 
+        for (const key in data) {
+          const td = document.createElement("td");
+          td.textContent = data[key];
+          trBody.appendChild(td);
+        }
+
+        tbody.appendChild(trBody);
+        table.appendChild(tbody);
+
+        // Adiciona a tabela ao corpo do modal
+        modalBody.appendChild(table);
+
+        // Abrir o modal
+        $("#detalharModal").modal("show");
+      })
+      .catch((error) => {
+        console.error("Erro ao carregar detalhes da empresa:", error);
+      });
+  }
+});
 function editarEmpresa(epCodigo) {
   // Implemente a lógica para obter os dados atualizados da empresa, seja através de um modal de edição ou outro método
 
