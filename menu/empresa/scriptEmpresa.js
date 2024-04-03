@@ -82,63 +82,28 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then((data) => {
         const detalhesEmpresa = document.getElementById("detalhesEmpresa");
-        const modalBody = document.getElementById("modalBody");
-
-        // Limpa o conteúdo anterior do modal
-        modalBody.innerHTML = "";
-
-        // Cria uma tabela
-        const table = document.createElement("table");
-        table.classList.add("table");
-
-        // Cria o cabeçalho da tabela
-        const thead = document.createElement("thead");
-        const trHead = document.createElement("tr");
-
-        // Adiciona cabeçalhos de coluna
-        for (const key in data) {
-          const th = document.createElement("th");
-          th.textContent = key;
-          trHead.appendChild(th);
-        }
-
-        thead.appendChild(trHead);
-        table.appendChild(thead);
-
-        // Cria o corpo da tabela
-        const tbody = document.createElement("tbody");
-
-        // Adiciona uma linha com os detalhes da empresa
-        const trBody = document.createElement("tr");
-
-        for (const key in data) {
-          const td = document.createElement("td");
-          td.textContent = data[key];
-          trBody.appendChild(td);
-        }
-
-        tbody.appendChild(trBody);
-        table.appendChild(tbody);
-
-        // Adiciona a tabela ao corpo do modal
-        modalBody.appendChild(table);
+        detalhesEmpresa.textContent = JSON.stringify(data, null, 2);
 
         // Abrir o modal
-        $("#detalharModal").modal("show");
+        $("#detalhesModal").modal("show");
       })
       .catch((error) => {
         console.error("Erro ao carregar detalhes da empresa:", error);
       });
   }
 });
+
 function editarEmpresa(epCodigo) {
   // Implemente a lógica para obter os dados atualizados da empresa, seja através de um modal de edição ou outro método
 
   // Exemplo de dados atualizados
   const dadosAtualizados = {
     // Insira os dados atualizados da empresa aqui
-    razao_social: "Nova Razão Social",
+    cod_estabel: "Novo Estabelecimento",
     cgc: "Novo CGC",
+    ins_municipal: "Nova Inscrição Municipal",
+    inscr_estad: "Nova Inscrição Estadual",
+    razao_social: "Nova Razão Social",
     // Etc...
   };
 
@@ -196,3 +161,4 @@ function excluirEmpresa(epCodigo) {
       console.error("Erro ao excluir empresa:", error);
     });
 }
+s;
