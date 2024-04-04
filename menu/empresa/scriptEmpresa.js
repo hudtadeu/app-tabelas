@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   const base64Credentials = sessionStorage.getItem("token");
+  const apiUrl = "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa";
+
 
   if (!base64Credentials) {
     console.error("base64Credentials não encontrado na sessionStorage");
     return;
   }
 
-  fetch(
-    "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa",
+  fetch(apiUrl,
     {
       method: "GET",
       headers: {
@@ -62,41 +63,53 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   function detalharModal(epCodigo) {
-    const url =
-      "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/?ep-codigo=" +
-      epCodigo;
+    console.log("Código: ", epCodigo);
+    const urlDetalhar = `${apiUrl}/?ep-codigo=${epCodigo}`;
 
-    fetch(url, {
+    fetch(urlDetalhar, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Basic ${sessionStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(),
+      }
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Erro ao solicitar os detalhes da empresa");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        const detalhesEmpresa = document.getElementById("detalhesEmpresa");
-        detalhesEmpresa.textContent = JSON.stringify(data, null, 2);
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Erro ao solicitar os detalhes da empresa");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Resposta da API de detalhar:", data);
+      const modalBody = document.getElementById("modalBody");
+      // // Limpa o conteúdo anterior do modal
+      // modalBody.innerHTML = "";
 
-        // Abrir o modal
-        $("#detalhesModal").modal("show");
-      })
-      .catch((error) => {
-        console.error("Erro ao carregar detalhes da empresa:", error);
-      });
+      const empresa = data.items[0]; // Acessando o primeiro item
+      console.log("Empresa:", empresa);
+
+      if (modalBody) {
+        modalBody.innerHTML = `
+          <p><strong>Código:</strong> ${empresa['cod-estabel']}</p>
+          <p><strong>Nome CGC:</strong> ${empresa['cgc']}</p>
+          <p><strong>Inscrição Municipal:</strong> ${empresa['ins-municipal']}</p>
+          <p><strong>Inscrição Estadual:</strong> ${empresa['inscr-estad']}</p>
+          <p><strong>Razão Social:</strong> ${empresa['razao-social']}</p>
+        `;
+      }
+        // Exibe o modal
+        $("#detalharModal").modal("show");
+  })
+    .catch((error) => {
+      console.error("Erro ao carregar detalhes da empresa:", error);
+    });
   }
 });
 
 function editarEmpresa(epCodigo) {
-  // Implemente a lógica para obter os dados atualizados da empresa, seja através de um modal de edição ou outro método
+  console.log("Código: ", epCodigo);
+  const urlEditar = `${apiUrl}/?ep-codigo=${epCodigo}`;
 
-  // Exemplo de dados atualizados
   const dadosAtualizados = {
     // Insira os dados atualizados da empresa aqui
     cod_estabel: "Novo Estabelecimento",
@@ -107,12 +120,7 @@ function editarEmpresa(epCodigo) {
     // Etc...
   };
 
-  // URL para enviar a solicitação PUT
-  const url =
-    "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/?ep-codigo=" +
-    epCodigo;
-
-  fetch(url, {
+  fetch(urlEditar, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -136,12 +144,10 @@ function editarEmpresa(epCodigo) {
 }
 
 function excluirEmpresa(epCodigo) {
-  // URL para enviar a solicitação DELETE
-  const url =
-    "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/?ep-codigo=" +
-    epCodigo;
+  console.log("Código: ", epCodigo);
+  const urlExcluir = `${apiUrl}/?ep-codigo=${epCodigo}`;
 
-  fetch(url, {
+  fetch(urlExcluir, {
     method: "DELETE",
     headers: {
       Authorization: `Basic ${sessionStorage.getItem("token")}`,
@@ -155,10 +161,8 @@ function excluirEmpresa(epCodigo) {
     })
     .then((data) => {
       console.log("Empresa excluída com sucesso:", data);
-      // Atualize a tabela ou faça outras ações necessárias após a exclusão bem-sucedida
     })
     .catch((error) => {
       console.error("Erro ao excluir empresa:", error);
     });
 }
-s;

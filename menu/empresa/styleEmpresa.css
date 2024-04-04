@@ -118,6 +118,48 @@ h1 {
   font-size: 15px; /* Tamanho desejado para os ícones */
 }
 
+/* Estilos para o modal */
+.modal-content {
+  background-color: #fff; /* Cor de fundo do modal */
+  border-radius: 8px; /* Borda arredondada */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.modal-header {
+  background-color: #0098c9; /* Cor de fundo do cabeçalho */
+  color: #fff; /* Cor do texto do cabeçalho */
+  border-bottom: none; /* Remover borda inferior */
+  border-radius: 8px 8px 0 0; /* Borda arredondada apenas no topo */
+}
+
+.modal-title {
+  font-weight: bold; /* Texto em negrito */
+}
+
+.modal-body {
+  font-size: 16px; /* Tamanho da fonte */
+  line-height: 1.6; /* Altura da linha */
+  color: #333; /* Cor do texto */
+}
+
+.modal-body p {
+  margin-bottom: 10px; /* Espaçamento inferior entre os parágrafos */
+}
+
+.modal-body strong {
+  font-weight: bold; /* Texto em negrito */
+}
+
+.modal-footer {
+  background-color: #f0f0f0; /* Cor de fundo do rodapé */
+  border-top: none; /* Remover borda superior */
+  border-radius: 0 0 8px 8px; /* Borda arredondada apenas na parte inferior */
+}
+
+.modal-footer button {
+  margin-right: 10px; /* Espaçamento entre os botões */
+}
+
 /* Estilos para a tabela quando em telas pequenas */
 @media screen and (max-width: 600px) {
   .table-striped {

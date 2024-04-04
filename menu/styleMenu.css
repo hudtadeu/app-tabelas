@@ -63,8 +63,8 @@ body {
 /* Estilo para o título do menu lateral */
 .sidebar-title {
   color: #333; /* Cor do texto do título */
-  padding: 10px 20px; /* Espaçamento interno do título */
-  margin-bottom: 10px; /* Margem inferior para separar o título das opções de navegação */
+  padding: 1px 2px; /* Espaçamento interno do título */
+  margin-bottom: 2px; /* Margem inferior para separar o título das opções de navegação */
 }
 
 /* Estilo para o conteúdo principal */
