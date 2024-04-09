@@ -6,9 +6,13 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #0098c9;
+  background-image: url("../../images/fundo-form-conti.png");
+  background-size: cover; /* Cobrir toda a área do body */
+  background-position: center; /* Centralizar a imagem */
   color: #fff;
   margin: 0;
   padding: 0;
+  height: 100vh; /* Altura total da janela do navegador */
 }
 
 .container {
