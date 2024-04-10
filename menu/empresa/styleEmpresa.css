@@ -7,13 +7,12 @@ body {
   font-family: Arial, sans-serif;
   background-color: #0098c9;
   background-image: url("../../images/fundo-form-conti.png");
-  background-size: cover; /* Cobrir toda a área do body */
-  background-position: center; /* Centralizar a imagem */
+  background-size: cover; 
+  background-position: center; 
   color: #fff;
   margin: 0;
   padding: 0;
-  height: 100vh; /* Altura total da janela do navegador */
-}
+  height: 100vh; 
 
 .container {
   background-color: #fff;
@@ -49,7 +48,7 @@ h1 {
   color: #fff;
   border-color: #fff;
   background-color: #0098c9 !important;
-  padding: 6px 12px; /* Espaçamento interno do botão */
+  padding: 6px 12px;
   border-radius: 5px;
 }
 
@@ -62,7 +61,7 @@ h1 {
   color: #fff;
   border-color: #fff;
   background-color: #0098c9 !important;
-  padding: 6px 12px; /* Espaçamento interno do botão */
+  padding: 6px 12px; 
   border-radius: 5px;
 }
 
@@ -75,7 +74,7 @@ h1 {
   color: #fff;
   border-color: #fff;
   background-color: #0098c9 !important;
-  padding: 6px 12px; /* Espaçamento interno do botão */
+  padding: 6px 12px; 
   border-radius: 5px;
 }
 
@@ -119,52 +118,57 @@ h1 {
 }
 
 .icon-small {
-  font-size: 15px; /* Tamanho desejado para os ícones */
+  font-size: 15px; 
 }
 
-/* Estilos para o modal */
 .modal-content {
-  background-color: #fff; /* Cor de fundo do modal */
-  border-radius: 8px; /* Borda arredondada */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+  position: fixed;
+  top: 4%;
+  left: 4%;
+  width: 90%;
+  height: 90%;
+  overflow: auto;
+  background-color: #fff; 
+  border-radius: 8px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 .modal-header {
-  background-color: #0098c9; /* Cor de fundo do cabeçalho */
-  color: #fff; /* Cor do texto do cabeçalho */
-  border-bottom: none; /* Remover borda inferior */
-  border-radius: 8px 8px 0 0; /* Borda arredondada apenas no topo */
+  background-color: #0098c9; 
+  color: #fff; 
+  border-bottom: none;
+  border-radius: 8px 8px 0 0; 
 }
 
 .modal-title {
-  font-weight: bold; /* Texto em negrito */
+  font-weight: bold; 
 }
 
 .modal-body {
-  font-size: 16px; /* Tamanho da fonte */
-  line-height: 1.6; /* Altura da linha */
-  color: #333; /* Cor do texto */
+  font-size: 16px; 
+  line-height: 1.6; 
+  color: #333;
 }
 
 .modal-body p {
-  margin-bottom: 10px; /* Espaçamento inferior entre os parágrafos */
+  margin-bottom: 10px; 
 }
 
 .modal-body strong {
-  font-weight: bold; /* Texto em negrito */
+  font-weight: bold; 
 }
 
 .modal-footer {
-  background-color: #f0f0f0; /* Cor de fundo do rodapé */
-  border-top: none; /* Remover borda superior */
-  border-radius: 0 0 8px 8px; /* Borda arredondada apenas na parte inferior */
+  background-color: #f0f0f0;
+  border-top: none;
+  border-radius: 0 0 8px 8px; 
 }
 
 .modal-footer button {
-  margin-right: 10px; /* Espaçamento entre os botões */
+  margin-right: 10px; 
 }
 
-/* Estilos para a tabela quando em telas pequenas */
+
 @media screen and (max-width: 600px) {
   .table-striped {
     overflow-x: auto;
@@ -175,4 +179,110 @@ h1 {
   .table-striped td {
     white-space: nowrap;
   }
+}
+
+#iconContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  background-color: #0098c9;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0077a9;
+}
+
+button:focus {
+  outline: none;
+}
+
+#infoContainer,
+#infoTraducao {
+  display: none;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 12px;
+  background-color: #ebecee; 
+  border-radius: 5px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#infoContainer p,
+#infoTraducao p {
+  margin: 5px 0;
+}
+
+#infoContainer strong,
+#infoTraducao strong {
+  color: #0098c9; 
+}
+
+.icone-verde,
+.icone-vermelho {
+  color: #0098c9; 
+  font-size: 14px; 
+
+}
+
+.icone-vermelho {
+  color: #ff4d4d; 
+}
+
+#Container {
+  background-color: #ebecee;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#Container p {
+  margin: 10px 0;
+}
+
+#Container strong {
+  color: #0098c9;
+}
+
+.quadrante {
+  background-color: #ebecee;
+  border: 2px solid #0098c9;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.quadrante:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.quadrante p {
+  margin: 0;
+}
+
+.quadrante strong {
+  color: #0098c9;
+}
+
+#infoArmazena {
+  padding: 8px;
+  font-size: 11px;
+  border: 2px solid #0098c9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
 }
