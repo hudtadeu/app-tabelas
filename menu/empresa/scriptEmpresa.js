@@ -32,16 +32,18 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${item["inscr-estad"]}</td>
             <td>${item["razao-social"]}</td>
             <td>
-              <button id="detalharBtn${index}" type="button" class="btn btn-primary" title="Detalhar">
+            <div class="btn-group btn-group-sm" role="group">
+              <button id="detalharBtn${index}" type="button" class="btn btn-primary mx-1" title="Detalhar">
                 <i class="bi bi-eye icon-small"></i>
               </button>
-              <button type="button" class="btn btn-warning" title="Editar">
+              <button type="button" class="btn btn-warning mx-1" title="Editar">
                 <i class="bi bi-pencil icon-small"></i>
               </button>
-              <button type="button" class="btn btn-danger" title="Excluir">
+              <button type="button" class="btn btn-danger mx-1" title="Excluir">
                 <i class="bi bi-trash icon-small"></i>
               </button>
-            </td>
+            </div>
+          </td>
           `;
           tableBody.appendChild(row);
 
@@ -90,12 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
       <p><strong>Nome:</strong> <div class="quadrante"> ${empresa["nome"]}</div></p>
       <p><strong>Razão Social:</strong> <div class="quadrante"> ${empresa["razao-social"]}</div></p>
       </div>
+      <div class="btn-group btn-group-sm" role="group">
     <div id="iconContainer">
       <button id="geralButton">GERAL</button>
       <button id="traducaoButton">TRADUÇÃO</button>
       <button id="traducaoButtonb">TRADUÇÃO ||</button>
       <button id="configuracoesButton">CONFIGURAÇÕES</button>
       <button id="servidorButton">SERVIDOR RPW</button>
+    </div>
     </div>
     <div id="infoContainer"></div>
     <div id="infoTraducao"></div>
@@ -131,19 +135,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 empresa["pasta-entrada"]
               }</p>
               <p><strong>Pasta Processo Email:</strong> ${
-                empresa["pasta-proc-email"]
+                empresa["pasta-proc-mail"]
               }</p>
               <p><strong>Pasta de Erros:</strong> ${empresa["pasta-erros"]}</p>
               <p><strong>Armazenagem do XML:</strong> <div id="infoArmazena">
                 Não Armazena ${armazenamentoNaoArmazena}  
                 Armazena Pasta Física ${armazenamentoPastaFisica} 
                 Armazena Banco de Dados ${armazenamentoBancoDados}
-                </div>
-                <div>${
+                <div id="infoArmazena">
+                <div>${getCheckboxHTML(
                   empresa["l-pasta-log"]
-                    ? '<input type="checkbox" checked disabled>'
-                    : "Não"
-                } Habilita Pasta Log</div>
+                )} Habilita Pasta Log</div></div></div>
               <p><strong>Pasta de Armazenagem:</strong> ${
                 empresa["pasta-armaz"]
               }</p>
@@ -151,12 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 empresa["pasta-grava-log"]
               }</p>
             `;
-          };
-
-          const getIconHTML = (value) => {
-            const iconClass = value ? "icone-verde" : "icone-vermelho";
-            const icon = value ? "✔" : "✘";
-            return `<span class="${iconClass}">${icon}</span>`;
           };
 
           const showTraducaoInfo = () => {
@@ -167,16 +163,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const getCheckBoxHTML = (value) => {
               if (value === true) {
-                return '<input type="checkbox" checked>';
+                return '<input type="checkbox" checked disabled>';
               } else {
-                return '<input type="checkbox">';
+                return '<input type="checkbox" disabled>';
               }
             };
 
+            const getCheckboxHTML = (condition) => {
+              return `
+                <input type="checkbox" disabled ${condition ? "checked" : ""}>
+              `;
+            };
+
+            const xPed = getCheckboxHTML(empresa["tag-ordem-compra"] === 1);
+            const nItemPed = getCheckboxHTML(empresa["tag-ordem-compra"] === 2);
+
             infoTraducao.innerHTML = `
+            <div class="checkbox-container">
               <p><strong>Utiliza Item Cliente/Fornecedor:</strong> ${getCheckBoxHTML(
                 empresa["l-item-fornec"]
-              )}</p>
+              )} </p>
               <p><strong>Utiliza FIFO Ordem de Compra:</strong> ${getCheckBoxHTML(
                 empresa["l-fifo-ordem-compra"]
               )}</p>
@@ -198,9 +204,17 @@ document.addEventListener("DOMContentLoaded", function () {
               <p><strong>Informa Conta/CCusto Manual Item:</strong> ${getCheckBoxHTML(
                 empresa[""]
               )}</p>
+              <div class="square-container">
               <p><strong>Usa Tag Ordem Compra:</strong> ${getCheckBoxHTML(
                 empresa["l-usa-tag-compra"]
               )}</p>
+              <div class="square-container">
+              <p><strong>Tag Ordem Compra:</strong> <div>
+                xPed ${xPed}  
+                nItemPed ${nItemPed} 
+                </div>
+                </div>
+                </div></p>
               <p><strong>Usa NCM Fornecedor:</strong> ${getCheckBoxHTML(
                 empresa["log-ncm-fornec"]
               )}</p>
@@ -250,6 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 empresa[""]
               )}
               </p>
+              </div>
 `;
           };
 
@@ -261,25 +276,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const getCheckBoxHTML = (value) => {
               if (value === true) {
-                return '<input type="checkbox" checked>';
+                return '<input type="checkbox" checked disabled>';
               } else {
-                return '<input type="checkbox">';
+                return '<input type="checkbox" disabled>';
               }
             };
 
             infoTraducao.innerHTML = `
-    <p><strong>Depos Devolução:</strong> ${getCheckBoxHTML(
-      empresa["log-depos-devol"]
-    )} ${empresa["cod-depos-dev"]}
-    </p>
-    <p><strong>Localiz Devolução:</strong> ${empresa["cod-localiz-dev"]}</p>
-    <p><strong>Lote:</strong> ${getCheckBoxHTML(empresa["l-fixa-lote"])} ${
+            <p><strong>Devolução Nota Própria:</strong><div id="infoArmazena"> ${getCheckBoxHTML(
+              empresa["log-depos-devol"]
+            )} Define Depósito de Devolução</div>
+            </p>
+            <p><strong>Depos Devolução: </strong> <span id="infoArmazena"> Não encontrado. ${
+              empresa["cod-depos-dev"]
+            }
+            </p>
+            </span>
+            <p><strong>Localiz Devolução:</strong><span id="infoArmazena"> Não encontrado. ${
+              empresa["cod-localiz-dev"]
+            }</p>
+            </span>
+            <p><strong>Informações Lote Automática:</strong><div> ${getCheckBoxHTML(
+              empresa["l-fixa-lote"]
+            )}  Insere Lote Fixo</p>
+            </div>
+            <p><strong>Lote Fixo:</strong><span id="infoArmazena"> Não encontrado.${
               empresa["lote"]
-            } ${empresa["dt-valid-lote"]}</p>
-    <p><strong>Pasta Copia GFE:</strong> ${getCheckBoxHTML(
-      empresa["l-copia-gfe"]
-    )} ${empresa["pasta-gfe"]}</p>
-    <p><strong>Anexos Divergência:</strong> ${empresa["pasta-anexo-diverg"]}</p>
+            }</span> <strong> Dt Validade:</strong><span id="infoArmazena"> Não encontrado. ${
+              empresa["dt-valid-lote"]
+            }</span></p>
+            <p> ${getCheckBoxHTML(
+              empresa["l-copia-gfe"]
+            )} Copia CT-e para GFE</p> ${empresa["pasta-gfe"]}</p>
+            <p><strong>Pasta Cópia GFE: </strong><span id="infoArmazena"> Não encontrado. ${
+              empresa["pasta-gfe"]
+            }</span></p>
+            <p><strong>Anexos Divergência: </strong><span id="infoArmazena"> Não encontrado. ${
+              empresa["pasta-anexo-diverg"]
+            }</span></p>
   `;
           };
 
@@ -288,25 +322,53 @@ document.addEventListener("DOMContentLoaded", function () {
             infoContainer.style.display = "none";
             const infoTraducao = document.querySelector("#infoTraducao");
             infoTraducao.style.display = "block";
+
+            const getCheckBoxHTML = (value) => {
+              if (value === true) {
+                return '<input type="checkbox" checked disabled>';
+              } else {
+                return '<input type="checkbox" disabled>';
+              }
+            };
+
+            const getCheckboxHTML = (condition) => {
+              return `
+                <input type="checkbox" disabled ${condition ? "checked" : ""}>
+              `;
+            };
+
+            const condicao1 = getCheckboxHTML(
+              empresa["tipo-certificado"] === 1
+            );
+            const condicao2 = getCheckboxHTML(
+              empresa["tipo-certificado"] === 2
+            );
+
             infoTraducao.innerHTML = `
     <p><strong>Servidor E-mail:</strong> ${empresa["servidor-email"]}</p>
     <p><strong>E-mail NFe:</strong> ${empresa["e-mail-nfe"]}</p>
-    <p><strong>Senha E-mail:</strong> ${
+    <p><strong>Senha E-mail:</strong><span id="infoArmazena"> ${
       empresa["senha-email"] ? "********" : "Não definida"
-    }</p>
+    }</span></p>
     <p><strong>Tipo Conexão:</strong> ${
       empresa["tipo-conexao-mail"] === 1 ? "Segura" : "Não segura"
     }</p>
-    <p><strong>Cliente ID:</strong> ${empresa["client-id"]}</p>
-    <p><strong>Tenant ID:</strong> ${empresa["tenant-id"]}</p>
+    <p><strong>Cliente ID:</strong> <span id="infoArmazena"> Não encontrado. ${
+      empresa["client-id"]
+    }</span></p>
+    <p><strong>Tenant ID:</strong><span id="infoArmazena"> Não encontrado. ${
+      empresa["tenant-id"]
+    }</span></p>
     <p><strong>Ambiente SEFAZ:</strong> ${empresa["ambiente-sefaz"]}</p>
     <p><strong>Ambiente Destinada:</strong> ${
       empresa["ambiente-destinadas"]
     }</p>
-    <p><strong>Tipo Certificado:</strong> ${
-      empresa["tipo-certificado"] === 1 ? "A1" : "A3"
-    }</p>
-    <p><strong>Senha Certificado:</strong> ${
+    <p><strong>Tipo Certificado:</strong> <div id="infoArmazena">
+    A1 ${condicao1}  
+    A3 ${condicao2} 
+    </div>
+    </div>
+    </div></p><strong>Senha Certificado:</strong> ${
       empresa["senha-certificado"] ? "********" : "Não definida"
     }</p>
     <p><strong>Arquivo Certificado:</strong> ${empresa["arq-certificado"]}</p>
@@ -314,15 +376,19 @@ document.addEventListener("DOMContentLoaded", function () {
       empresa["pasta-arq-config"]
     }</p>
     <p><strong>Nome Arq Config:</strong> ${empresa["nome-arq-config"]}</p>
-    <p><strong>Utiliza Proxy:</strong> ${
-      empresa["l-utiliza-proxy"] ? "Sim" : "Não"
-    }</p>
-    <p><strong>Servidor Proxy:</strong> ${empresa["servidor-proxy"]}</p>
+    <p><strong>Utiliza Proxy:</strong><div id="infoArmazena"> ${getCheckBoxHTML(
+      empresa["l-utiliza-proxy"]
+    )} Utiliza Proxy</div>
+    <p><strong>Servidor Proxy:</strong><span id="infoArmazena"> Não encontrado. ${
+      empresa["servidor-proxy"]
+    }</span></p>
     <p><strong>Porta:</strong> ${empresa["porta-proxy"]}</p>
-    <p><strong>Usuário Proxy:</strong> ${empresa["usuario-proxy"]}</p>
-    <p><strong>Senha Proxy:</strong> ${
+    <p><strong>Usuário Proxy:</strong><span id="infoArmazena"> Não encontrado. ${
+      empresa["usuario-proxy"]
+    }</span></p>
+    <p><strong>Senha Proxy:</strong><span id="infoArmazena"> ${
       empresa["senha-proxy"] ? "********" : "Não definida"
-    }</p>
+    }</span></p>
   `;
           };
 
@@ -334,15 +400,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const getCheckBoxHTML = (value) => {
               if (value === true) {
-                return '<input type="checkbox" checked>';
+                return '<input type="checkbox" checked disabled>';
               } else {
-                return '<input type="checkbox">';
+                return '<input type="checkbox" disabled>';
               }
             };
 
             infoTraducao.innerHTML = `
     <p><strong>Usa Linux RPW:</strong> ${getCheckBoxHTML(
-      empresa["ambiente-sefaz"]
+      empresa["l-usa-linux-rpw"]
     )}</p>
     <p><strong>Arquivo Certificado Linux:</strong> ${
       empresa["cod-arq-certificado-lnx"]
@@ -356,12 +422,12 @@ document.addEventListener("DOMContentLoaded", function () {
     <p><strong>Pasta de Entrada Linux:</strong> ${
       empresa["pasta-entrada-lnx"]
     }</p>
-    <p><strong>Pasta Processo E-mail Linux:</strong> ${
+    <p><strong>Pasta Processo E-mail Linux:</strong><span id="infoArmazena"> Não encontrado. ${
       empresa["pasta-proc-mail-lnx"]
-    }</p>
-    <p><strong>Pasta Processo DFE Linux:</strong> ${
+    }</span></p>
+    <p><strong>Pasta Processo DFE Linux:</strong><span id="infoArmazena"> Não encontrado. ${
       empresa["pasta-proc-dfe-lnx"]
-    }</p>
+    }</span></p>
     <p><strong>Pasta de Erros Linux:</strong> ${empresa["pasta-erros-lnx"]}</p>
     <p><strong>Pasta de Log Linux:</strong> ${
       empresa["pasta-grava-log-linux"]
